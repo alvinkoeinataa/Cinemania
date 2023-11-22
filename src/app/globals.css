@@ -5,3 +5,33 @@
 body {
   background-color: black;
 }
+
+.loading {
+  --d: 22px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  color: #ffc639;
+  box-shadow: calc(1 * var(--d)) calc(0 * var(--d)) 0 0, calc(0.707 * var(--d)) calc(0.707 * var(--d)) 0 1px, calc(0 * var(--d)) calc(1 * var(--d)) 0 2px, calc(-0.707 * var(--d)) calc(0.707 * var(--d)) 0 3px,
+    calc(-1 * var(--d)) calc(0 * var(--d)) 0 4px, calc(-0.707 * var(--d)) calc(-0.707 * var(--d)) 0 5px, calc(0 * var(--d)) calc(-1 * var(--d)) 0 6px;
+  animation: s7 1s infinite steps(8);
+}
+
+@keyframes s7 {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+.gamb {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  /* background-image: inherit; */
+  opacity: 0, 2;
+}
+
+/* <div className="col-span-2 row-span-2">
+            <img src={`${process.env.NEXT_PUBLIC_BASE_IMG_URL}/${film.poster_path}`} className="block h-[40em] w-[30em] object-cover mr-2" />
+          </div> */

@@ -1,32 +1,38 @@
 "use client";
 import { useEffect, useState } from "react";
 import { fetchMovies } from "@/libs/apiLibs";
-import MovieList from "@/components/MovieList";
 import Slider from "@/components/MovieList/Slider";
 import Navbar from "@/components/Navbar";
+import SliderTube from "@/components/MovieList/SliderTube";
 
 export default function Home() {
   const [popular, setPopular] = useState([]);
   const [upcoming, setUpcomning] = useState([]);
   const [popularTV, setPopularTV] = useState([]);
   const [rate, setTopRate] = useState([]);
-
-  // const [nowPlayingMovies, setNowPlayingMovies] = useState([]);
+  const [discover, setDiscover] = useState([]);
+  const [nowPlaying, setNowPlaying] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
       try {
         const popularData = await fetchMovies("movie/popular");
-        setPopular(popularData.slice(0, 5));
+        setPopular(popularData.slice(0, 20));
 
         const upcomingData = await fetchMovies("movie/upcoming");
-        setUpcomning(upcomingData.slice(0, 5));
+        setUpcomning(upcomingData.slice(0, 20));
 
         const setPopularTVData = await fetchMovies("tv/popular");
-        setPopularTV(setPopularTVData.slice(0, 5));
+        setPopularTV(setPopularTVData.slice(0, 25));
 
         const setTopRateData = await fetchMovies("tv/top_rated");
-        setTopRate(setTopRateData.slice(0, 5));
+        setTopRate(setTopRateData.slice(0, 25));
+
+        const discoverData = await fetchMovies("discover/movie");
+        setDiscover(discoverData.slice(0, 20));
+
+        const nowData = await fetchMovies("movie/now_playing");
+        setNowPlaying(nowData.slice(0, 20));
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -36,26 +42,28 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
+    <>
       <Navbar />
-      <div className="px-8 pt-20">
-        {/* <h1>Now Playing Movies</h1>
-   <MovieList movies={nowPlayingMovies} /> */}
+      <div className="px-8 pt-10">
+        <SliderTube api={discover} />
         <h1 className="text-white text-2xl">Popular Movies</h1>
-        <MovieList movies={popular} />
+        <Slider api={popular} />
 
-        <h1>Upcoming Movies</h1>
-        <MovieList movies={upcoming} />
+        <h1 className="text-white text-2xl">Upcoming Movies</h1>
+        <Slider api={upcoming} />
 
-        <h1>Popular TV Series</h1>
-        <MovieList movies={popularTV} />
+        <h1 className="text-white text-2xl">Popular TV Series</h1>
+        <Slider api={popularTV} />
 
-        <h1>Top Rated TV Series</h1>
-        <MovieList movies={rate} />
+        <h1 className="text-white text-2xl">Top Rated TV Series</h1>
+        <Slider api={rate} />
 
-        {/* <Slider api={popularTV} />
-   <Slider api={rate} /> */}
+        <h1 className="text-white text-2xl">Now Playing Movie</h1>
+        <Slider api={nowPlaying} />
+
+        {/* <h1 className="text-white text-2xl">Discover Movie</h1>
+        <Slider api={discover} /> */}
       </div>
-    </div>
+    </>
   );
 }

@@ -8,15 +8,15 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Link from "next/link";
 
-export default function Slider({ api }) {
+export default function SliderData({ api }) {
   return (
-    <section className="pb-6 mb-8">
+    <section className="pb-12">
       <div className="container">
         <Swiper
           navigation
           pagination={{ type: "fraction" }}
           modules={[Navigation]}
-          className="w-full"
+          className="h-96 w-full"
           slidesPerView={5}
           breakpoints={{
             320: {
@@ -40,18 +40,11 @@ export default function Slider({ api }) {
             },
           }}
         >
-          {api?.map((movie, index) => (
+          {api?.map((item, index) => (
             <SwiperSlide key={index}>
-              <div className="flex h-full w-full items-center justify-center p-1">
-                {movie.title ? (
-                  <Link href={`/movie/${movie.id}`} key={index} className="cursor-pointer" passHref>
-                    <Image src={`${process.env.NEXT_PUBLIC_BASE_IMG_URL}/${movie.poster_path}`} width={600} height={350} alt="gamb" className="block h-full w-full object-cover mr-2 " />
-                  </Link>
-                ) : (
-                  <Link href={`/tv/${movie.id}`} key={index} className="cursor-pointer" passHref>
-                    <Image src={`${process.env.NEXT_PUBLIC_BASE_IMG_URL}/${movie.poster_path}`} width={600} height={350} alt="gamb" className="block h-full w-full object-cover mr-2 " />
-                  </Link>
-                )}
+              <div className="flex flex-col h-full w-full items-center justify-center p-1">
+                <Image src={`${process.env.NEXT_PUBLIC_BASE_IMG_URL}/${item.profile_path || item.file_path}`} width={600} height={350} alt="gamb" className="block h-full w-full object-cover mr-1" />
+                <h1 className="text-white text-lg">{item?.name}</h1>
               </div>
             </SwiperSlide>
           ))}
