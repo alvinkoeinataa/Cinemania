@@ -13,7 +13,7 @@ const VideoPlayer = ({ youtubeId }) => {
 
   return (
     <div>
-      <YouTube videoId={youtubeId} onReady={(e) => e.target.pauseVideo()} opts={option} />
+      <YouTube videoId={youtubeId} onReady={(e) => e.target.pauseVideo()} opts={option} className="flex w-[100vw] justify-center items-center" />
     </div>
   );
 };
