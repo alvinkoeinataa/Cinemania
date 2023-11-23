@@ -54,15 +54,15 @@ const Detail = ({ params: { id } }) => {
   return (
     <>
       <Navbar />
-      <div className="pt-4 px-8 my-8">
+      <div className="my-8">
         <header className="grid md:grid-cols-2 gap-2 grid-cols-1 mt-6 mb-16">
           {/* <div className="opacity-40 relative object-cover">
             <img src={`${process.env.NEXT_PUBLIC_BASE_IMG_URL}/${film.poster_path}`} className="w-screen " />
           </div> */}
-          <div>
+          <div className="pl-0 sm:pl-12">
             <img src={`${process.env.NEXT_PUBLIC_BASE_IMG_URL}/${film.poster_path}`} className="block h-[28em] sm:h-[36em] w-[30em]  object-cover px-5 mb-6" />
           </div>
-          <div className="">
+          <div className="px-4">
             <h1 className="md:text-4xl sm:text-2xl text-2xl text-white">
               {film.title} - {film.release_date}
             </h1>
