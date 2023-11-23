@@ -44,7 +44,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <div className="px-8 pt-10">
+      <div>
         <SliderTube api={discover} />
         <h1 className="text-white text-2xl">Popular Movies</h1>
         <Slider api={popular} />

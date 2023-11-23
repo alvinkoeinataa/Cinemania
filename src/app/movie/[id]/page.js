@@ -73,7 +73,7 @@ const Detail = ({ params: { id } }) => {
               </button>
 
               {gen.map((genre, index) => (
-                <button key={index} className="mr-2 text-lg rounded-lg border text-white border-color-primary p-2 bg-blue-900">
+                <button key={index} className="mr-2 text-lg rounded-lg border text-white border-color-primary p-0 sm:p-2 bg-blue-900">
                   <h1 className="text-white text-md sm:text-xl">{genre.name}</h1>
                 </button>
               ))}
