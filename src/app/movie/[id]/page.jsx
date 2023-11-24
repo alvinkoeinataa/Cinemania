@@ -54,22 +54,23 @@ const Detail = ({ params: { id } }) => {
   return (
     <>
       <Navbar />
-      <div className="my-8">
-        <header className="grid md:grid-cols-2 gap-2 grid-cols-1 mt-6 mb-16">
-          {/* <div className="opacity-40 relative object-cover">
-            <img src={`${process.env.NEXT_PUBLIC_BASE_IMG_URL}/${film.poster_path}`} className="w-screen " />
-          </div> */}
-          <div className="pl-0 sm:pl-12">
+
+      <div className="">
+        <div className="">
+          <img src={`${process.env.NEXT_PUBLIC_BASE_IMG_URL}/${film.backdrop_path}`} className="absolute w-full h-[65em] z-[-1] object-cover opacity-50" />
+        </div>
+        <header className="grid md:grid-cols-2 gap-2 grid-cols-1 mb-12">
+          <div className="flex justify-center mt-8">
             <img src={`${process.env.NEXT_PUBLIC_BASE_IMG_URL}/${film.poster_path}`} className="block h-[28em] sm:h-[36em] w-[30em]  object-cover px-5 mb-6" />
           </div>
-          <div className="px-4">
-            <h1 className="md:text-4xl sm:text-2xl text-2xl text-white">
-              {film.title} - {film.release_date}
+          <div className="px-4 mt-8">
+            <h1 className="md:text-4xl sm:text-2xl text-2xl text-white font-bold">
+              {film.title} ({film.release_date ? film.release_date.slice(0, 4) : ""})
             </h1>
 
             <div className="flex flex-row my-6">
-              <button className="mr-6 text-lg rounded-full border text-color-primary border-color-primary p-3 bg-color-secondary">
-                <h1 className="text-xl text-white ">{film.vote_average} / 10</h1>
+              <button className="bg-black mr-6 text-lg rounded-full border text-color-primary border-color-primary p-3 bg-color-secondary">
+                <h1 className="text-xl text-white ">{film.vote_average} </h1>
               </button>
 
               {gen.map((genre, index) => (
@@ -81,13 +82,12 @@ const Detail = ({ params: { id } }) => {
 
             <h1 className="py-5 text-xl text-white">{film.runtime} minutes</h1>
 
-            <h1 className="sm:text-xl text-md text-white ">{film.overview}</h1>
+            <h1 className="sm:text-xl text-md text-white">{film.overview}</h1>
           </div>
         </header>
 
-        {/* <h1 className="text-xl text-white">Cast</h1> */}
         <Header title="Cast" />
-        <SliderData api={castData} />
+        <SliderData api={castData} className="relative" />
 
         <Header title="Posters" />
         <SliderTube api={imgData} />

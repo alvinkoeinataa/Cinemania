@@ -60,9 +60,6 @@ export default function Home() {
 
         <h1 className="text-white text-2xl">Now Playing Movie</h1>
         <Slider api={nowPlaying} />
-
-        {/* <h1 className="text-white text-2xl">Discover Movie</h1>
-        <Slider api={discover} /> */}
       </div>
     </>
   );

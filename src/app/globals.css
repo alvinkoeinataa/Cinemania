@@ -31,10 +31,6 @@ body {
   opacity: 0, 2;
 } */
 
-/* <div className="col-span-2 row-span-2">
-            <img src={`${process.env.NEXT_PUBLIC_BASE_IMG_URL}/${film.poster_path}`} className="block h-[40em] w-[30em] object-cover mr-2" />
-          </div> */
-
 /* .vid {
   position: absolute;
   top: 0;

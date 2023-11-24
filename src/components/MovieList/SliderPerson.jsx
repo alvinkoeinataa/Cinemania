@@ -8,7 +8,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Link from "next/link";
 
-export default function SliderData({ api }) {
+export default function SliderPerson({ api }) {
   return (
     <section className="pb-12">
       <Swiper
@@ -41,9 +41,9 @@ export default function SliderData({ api }) {
       >
         {api?.map((item, index) => (
           <SwiperSlide key={index}>
-            <Link href={`/person/${item.id}`}>
+            <Link href={`/movie/${item.id}`}>
               <div className="mb-12">
-                <Image src={`${process.env.NEXT_PUBLIC_BASE_IMG_URL}/${item?.profile_path || item?.file_path}`} width={600} height={350} alt="gamb" className="block h-full w-full object-cover mr-1" />
+                <Image src={`${process.env.NEXT_PUBLIC_BASE_IMG_URL}/${item?.poster_path}`} width={600} height={350} alt="gamb" className="block h-full w-full object-cover mr-1" />
                 <h1 className="text-white text-lg">{item?.name}</h1>
               </div>
             </Link>
@@ -53,3 +53,19 @@ export default function SliderData({ api }) {
     </section>
   );
 }
+
+// {item.order ? (
+//   <Link href={`/person/${item.id}`}>
+//     <div className="mb-12">
+//       <Image src={`${process.env.NEXT_PUBLIC_BASE_IMG_URL}/${item?.profile_path || item?.file_path}`} width={600} height={350} alt="gamb" className="block h-full w-full object-cover mr-1" />
+//       <h1 className="text-white text-lg">{item?.name}</h1>
+//     </div>
+//   </Link>
+// ) : (
+//   <Link href={`/movie/${item.id}`}>
+//     <div className="mb-12">
+//       <Image src={`${process.env.NEXT_PUBLIC_BASE_IMG_URL}/${item?.profile_path || item?.poster_path}`} width={600} height={350} alt="gamb" className="block h-full w-full object-cover mr-1" />
+//       <h1 className="text-white text-lg">{item?.name}</h1>
+//     </div>
+//   </Link>
+// )}

@@ -9,11 +9,18 @@ const VideoPlayer = ({ youtubeId }) => {
     height: "600",
   };
 
-  document.cookie = "nama_cookie=nilai_cookie; samesite=None; secure";
-
   return (
     <div>
-      <YouTube videoId={youtubeId} onReady={(e) => e.target.pauseVideo()} opts={option} className="flex w-[100vw] justify-center items-center" />
+      <YouTube
+        videoId={youtubeId}
+        onReady={(e) => {
+          const iframe = e.target.getIframe();
+          iframe.contentWindow.postMessage("https://www.youtube.com");
+          e.target.pauseVideo();
+        }}
+        opts={option}
+        className="flex justify-center items-center"
+      />
     </div>
   );
 };
