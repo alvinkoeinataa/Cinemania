@@ -9,7 +9,7 @@ const Navbar = () => {
         CINEMANIA
       </Link>
       <Link href={"/search"} className="text-white bg-amber-800 p-3">
-        Movie search
+        Search
       </Link>
     </header>
   );
