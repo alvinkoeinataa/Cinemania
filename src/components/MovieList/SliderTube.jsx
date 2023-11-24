@@ -10,6 +10,7 @@ import Link from "next/link";
 import VideoPlayer from "../VideoPlayer";
 
 export default function SliderTube({ api }) {
+  // console.log(api);
   return (
     <section className="pb-8">
       <Swiper navigation pagination={{ type: "fraction" }} modules={[Navigation]} className="w-full" slidesPerView={1}>

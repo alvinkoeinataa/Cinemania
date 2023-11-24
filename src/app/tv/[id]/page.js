@@ -55,19 +55,22 @@ const TVDetail = ({ params: { id } }) => {
   return (
     <>
       <Navbar />
-      <div className="pt-4 px-8 mb-4 mt-8">
-        <header className="grid md:grid-cols-2 gap-2 grid-cols-1 mt-6 mb-16">
-          <div>
+      <div className="">
+        <div className="">
+          <img src={`${process.env.NEXT_PUBLIC_BASE_IMG_URL}/${film.backdrop_path}`} className="absolute w-full h-[65em] z-[-1] object-cover opacity-40" />
+        </div>
+        <header className="grid md:grid-cols-2 gap-2 grid-cols-1 mb-16">
+          <div className="flex justify-center mt-8">
             <img src={`${process.env.NEXT_PUBLIC_BASE_IMG_URL}/${film.poster_path}`} className="block h-[36em] w-[30em] object-cover px-5" />
           </div>
 
-          <div>
-            <h1 className="md:text-4xl sm:text-3xl text-2xl text-white">
+          <div className="px-4 mt-8">
+            <h1 className="md:text-4xl sm:text-3xl text-2xl text-white font-bold">
               {film.name} - {film.last_air_date}
             </h1>
 
             <div className="flex flex-row my-6">
-              <button className="mr-6 text-lg rounded-full border text-color-primary border-color-primary p-3 bg-color-secondary">
+              <button className="bg-black mr-6 text-lg rounded-full border text-color-primary border-color-primary p-3 bg-color-secondary">
                 <h1 className="text-xl text-white ">{film.vote_average} / 10</h1>
               </button>
 
@@ -78,9 +81,9 @@ const TVDetail = ({ params: { id } }) => {
               ))}
             </div>
 
-            <h1 className="py-5 text-xl text-white">{film.number_of_episodes} episodes</h1>
+            <h1 className="py-5 text-xl text-white font-bold">{film.number_of_episodes} episodes</h1>
 
-            <h1 className="text-2xl text-white">{film.overview}</h1>
+            <h1 className="sm:text-xl text-md text-white">{film.overview}</h1>
           </div>
         </header>
 
@@ -88,7 +91,7 @@ const TVDetail = ({ params: { id } }) => {
         <SliderData api={castData} />
 
         <Header title="Posters" />
-        <SliderData api={imgData} />
+        <SliderTube api={imgData} />
 
         <Header title="Videos" />
         <SliderTube api={videoData} />
